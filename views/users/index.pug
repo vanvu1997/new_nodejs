@@ -1,0 +1,24 @@
+extends ../layouts/default
+
+block content
+	h1 
+	span.mr-3 Users
+
+	a.btn.btn-primary(href="/users/create") New
+
+	.d-flex.align-items-center
+		form(action="/users/search", method="GET",class="d-flex")
+			form.form-inline.my-2.my-lg-0
+				input.form-control.mr-sm-2(name="q",type='search' placeholder='Search' aria-label='Search')
+				button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+	table.table
+		tr
+			th Name
+			th Phone
+
+		each user in users
+			tr
+				td= user.name
+				td= user.phone
+				td
+					a.btn.btn-light(href='/users/' + user.id) View	
